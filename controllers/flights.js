@@ -1,4 +1,4 @@
-const Flight = require('../models/movie');
+const Flight = require('../models/flight');
 
 module.exports = {
     index,
@@ -21,6 +21,18 @@ function newFlight(req, res) {
     res.render('flights/new', {title: 'Add Flight', errorMsg: ''});
 }
 
-// async function create(req, res) {
-//     req.body.
-// }
+async function create(req, res) {
+    req.body.departure = req.body.departure.toString()
+    console.log(req.body)
+    for (let key in req.body) {
+        if(req.body[key] === '') delete req.body[key];
+    }
+    try {
+        await Flight.create(req.body);
+        res.redirect('/flights');
+    } 
+    catch (error) {
+        console.log(error)
+        res.render('flights/new', {errorMsg: error.message})        
+    }
+}

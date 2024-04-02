@@ -17,7 +17,7 @@ const flightSchema = new mongoose.Schema({
         min: 10,
         max: 9999,
     },
-    departs: {
+    departure: {
         type: Date,
         default: function() {
             const oneYearPlus = new Date();
