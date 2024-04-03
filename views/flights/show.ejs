@@ -19,6 +19,14 @@
         </div>
     </section>
 
+    <div>Ticket</div>
+  <ul>
+    <% tickets.forEach(t => { %>
+        <li><%= t.seat %></li>
+        <li><%= t.price %></li>
+        <% }) %>
+  </ul>
+
     <br><br>
     <h2>Destinations</h2>
     <form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
