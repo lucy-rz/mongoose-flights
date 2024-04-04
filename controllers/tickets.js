@@ -7,13 +7,14 @@ module.exports = {
 };
 
 async function newTicket(req, res) {
-    console.log(req)
     const tickets = await Ticket.find({}).sort('seat');
-    res.render('tickets/new', { title: 'Add Ticket', tickets})
+    const flight = {_id: req.params.id}
+    res.render('tickets/new', { title: 'Add Ticket', tickets, flight})
 }
 
 async function create(req, res) {
     try {
+        req.body.flight = req.params.id
         await Ticket.create(req.body)
     } catch (error) {
         console.log(error)
