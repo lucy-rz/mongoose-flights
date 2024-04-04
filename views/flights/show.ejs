@@ -20,12 +20,20 @@
     </section>
 
     <div>Ticket</div>
-  <ul>
-    <% tickets.forEach(t => { %>
-        <li><%= t.seat %></li>
-        <li><%= t.price %></li>
-        <% }) %>
-  </ul>
+    <ul>
+        <% tickets.forEach(t=> { %>
+            <li>
+                <%= t.seat %>
+            </li>
+            <li>
+                <%= t.price %>
+            </li>
+            <% }) %>
+    </ul>
+    <form id="redirect-to-new-ticket" action= '/flights/<%= flight._id %>/tickets/new' method="GET">
+        <button type="submit">Add Ticket</button>
+    </form>
+
 
     <br><br>
     <h2>Destinations</h2>

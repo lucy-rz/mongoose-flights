@@ -7,6 +7,7 @@ module.exports = {
 };
 
 async function newTicket(req, res) {
+    console.log(req)
     const tickets = await Ticket.find({}).sort('seat');
     res.render('tickets/new', { title: 'Add Ticket', tickets})
 }
